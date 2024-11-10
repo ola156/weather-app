@@ -1,0 +1,93 @@
+.settings-name {
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+
+.wrappar {
+  width: 500px;
+}
+.options li,
+.select-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.select-btn {
+  height: 60px;
+  padding: 0 1.3em;
+  font-size: 1em;
+
+  justify-content: space-between;
+  border-radius: 7px;
+  background-color: var(--home-bg-color);
+  color: var(--text-color);
+  font-weight: 600;
+}
+.select-btn i {
+  font-size: 1.2em;
+  transition: transform 0.3s linear;
+}
+.wrappar.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.set-content {
+  display: none;
+  margin-top: 15px;
+  padding: 2em;
+  border-radius: 7px;
+  background: var(--home-bg-color);
+  color: var(--text-color);
+}
+.wrappar.active .set-content {
+  display: block;
+}
+.set-content .search {
+  position: relative;
+}
+.search i {
+  right: 15px;
+  line-height: 53px;
+  position: absolute;
+  font-size: 1.3em;
+}
+
+.search input {
+  height: 53px;
+  width: 100%;
+  font-size: 1em;
+  padding: 1em;
+  background-color: var(--primary-color);
+  outline: none;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  color: var(--text-color);
+}
+.search input::placeholder {
+  color: var(--text-color);
+}
+.set-content .options {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.options::-webkit-scrollbar {
+  width: 7px;
+}
+.options::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+  border-radius: 25px;
+}
+.options::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 25px;
+}
+.options li {
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 1.3em;
+  font-size: 1.2em;
+}
+.options li:hover {
+  background-color: var(--primary-color);
+}

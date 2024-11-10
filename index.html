@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="styles/settings.css" />
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="images/mist.png" alt="logo" />
+          </span>
+
+          <div class="text header-text">
+            <span class="name">Weather App</span>
+          </div>
+        </div>
+
+        <i class="ri-arrow-right-s-line toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-links">
+              <a href="#" class="active">
+                <i class="ri-home-4-line icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="#">
+                <i class="ri-cloud-line icon"></i>
+                <span class="text nav-text">Weather</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="#">
+                <i class="ri-showers-line icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-links">
+              <a href="#">
+                <i class="ri-settings-2-line icon"></i>
+                <span class="text nav-text">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="mode">
+            <div class="moon-sun">
+              <i class="ri-moon-line icon moon"></i>
+              <i class="ri-sun-line icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark Mode</span>
+            <div class="toggle-switch">
+              <span class="switch"> </span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="page home" style="display: block">
+        <div class="page-container">
+          <div class="current-info">
+            <div class="date-container">
+              <div class="time" id="time">
+                17:45 <span id="am-pm" class="pm">pm</span>
+              </div>
+              <div class="date" id="date">Monday 4 November</div>
+              <div class="weather-main-side">
+                <div class="weather-row">
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-tailwind-css-line"></i>
+                      <h3 id="PValue-1">0 mm/h</h3>
+                    </div>
+                    <span>Pressure</span>
+                  </div>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-water-percent-line"></i>
+                      <h3 id="HValues-1">68 %</h3>
+                    </div>
+                    <span>Humidity</span>
+                  </div>
+                  <!-----------------
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>100 %</h3>
+                    </div>
+                    <span>Clouds Cover</span>
+                  </div>   --------->
+                </div>
+                <div class="weather-row">
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-windy-line"></i>
+                      <h3 id="WValue-1">10 mph</h3>
+                    </div>
+                    <span>Wind</span>
+                  </div>
+                  <!--------------
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>2</h3>
+                    </div>
+                    <span>UV index</span>
+                  </div>  ------>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-eye-line"></i>
+                      <h3 id="Visibility">10 mi</h3>
+                    </div>
+                    <span>Visibility</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="place-container">
+              <div class="time-zone" id="time-zone">Africa/Lagos</div>
+              <div class="country" id="country">Nigeria</div>
+            </div>
+          </div>
+        </div>
+        <div class="future-forecast">
+          <div class="today" id="current-temp">
+            <img
+              src=" https://openweathermap.org/img/wn/10d@2x.png"
+              alt="weater icon"
+              class="weather-icon"
+            />
+            <div class="others">
+              <div class="day">Monday</div>
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+          </div>
+
+          <div class="weather-forecast" id="weather-forecast">
+            <div class="weather forecast-item">
+              <div class="day">Tuesday</div>
+              <img
+                src=" https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+            <div class="weather forecast-item">
+              <div class="day">Wednesday</div>
+              <img
+                src=" https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+            <div class="weather forecast-item">
+              <div class="day">Thursday</div>
+              <img
+                src=" https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+            <div class="weather forecast-item">
+              <div class="day">Friday</div>
+              <img
+                src=" https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+            <div class="weather forecast-item">
+              <div class="day">Tuesday</div>
+              <img
+                src=" https://openweathermap.org/img/wn/10d@2x.png"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">Night -29.6&#176; C</div>
+              <div class="temp">Day 89.6&#176; C</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="page Weather" style="display: none">
+        <div class="weather-container">
+          <div class="top-content">
+            <div class="current-location">
+              <i class="ri-map-pin-line"></i>
+              <p id="city">Nigeria, <span>Lagos State</span></p>
+            </div>
+            <div class="weather-input">
+              <img
+                src="images/search.png"
+                alt=""
+                onclick="findUserLocation()"
+              />
+              <input
+                type="text"
+                id="userLocation"
+                placeholder="search for cities"
+              />
+            </div>
+            <div class="icon-top-weather"></div>
+          </div>
+
+          <div class="weather-content">
+            <!------------------
+            <div class="weather-first">
+              <div class="weather-main">
+                <img
+                  src=" https://openweathermap.org/img/wn/10d@2x.png"
+                  alt="weater icon"
+                  class="weather-icon"
+                />
+                <div class="temp" id="temp">
+                  <h6>19 &#176;C</h6>
+                  <span> Feels like 17 &#176;C </span>
+                  <h5>Overcast</h5>
+                </div>
+              </div>
+              
+              <div class="weather-main-side">
+                <div class="weather-row">
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>0 mm/h</h3>
+                    </div>
+                    <span>Precipitation</span>
+                  </div>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>68 %</h3>
+                    </div>
+                    <span>Humidity</span>
+                  </div>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>100 %</h3>
+                    </div>
+                    <span>Clouds Cover</span>
+                  </div>
+                </div>
+                <div class="weather-row">
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>10 mph</h3>
+                    </div>
+                    <span>Wind</span>
+                  </div>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>2</h3>
+                    </div>
+                    <span>UV index</span>
+                  </div>
+                  <div class="weather-col">
+                    <div class="side">
+                      <i class="ri-settings-2-line icon"></i>
+                      <h3>10 mi</h3>
+                    </div>
+                    <span>Visibility</span>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            -------->
+            <div class="weather-current-bg">
+              <div class="current-weather-card">
+                <h2 class="card-title">Current Weather</h2>
+                <div class="wrapper">
+                  <p class="weather-heading" id="temprature">
+                    20&deg;<sup>c</sup>
+                  </p>
+                  <img
+                    src=" https://openweathermap.org/img/wn/10d@2x.png"
+                    alt="cloud"
+                    class="weather-icon"
+                    id="weather-icon"
+                  />
+                </div>
+
+                <p class="weather-card-body">Overcast Cloud</p>
+
+                <ul class="date-list">
+                  <li>
+                    <span class="icon">
+                      <i class="ri-home-4-line icon"></i>
+                    </span>
+                    <div id="date1">Monday 4 November</div>
+                  </li>
+                  <li>
+                    <span class="icon">
+                      <i class="ri-home-4-line icon"></i>
+                    </span>
+                    <p id="current-location">
+                      Nigeria, <span>Lagos State</span>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="days-forecast-bg">
+                <h2 class="card-title">5 Days Forecast</h2>
+                <div class="days-wrap">
+                  <div class="days-bg">
+                    <div class="days-img">
+                      <img src="images/clouds.png" alt="clouds" />
+                      <p class="weather-heading">20&deg;</p>
+                    </div>
+                    <div class="date">
+                      <p>4,Nov</p>
+                    </div>
+                    <div class="days">
+                      <p>Monday</p>
+                    </div>
+                  </div>
+                  <div class="days-bg">
+                    <div class="days-img">
+                      <img src="images/drizzle.png" alt="clouds" />
+                      <p class="weather-heading">54&deg;</p>
+                    </div>
+                    <div class="date">
+                      <p>5,Nov</p>
+                    </div>
+                    <div class="days">
+                      <p>Tuesday</p>
+                    </div>
+                  </div>
+                  <div class="days-bg">
+                    <div class="days-img">
+                      <img src="images/clouds.png" alt="clouds" />
+                      <p class="weather-heading">6&deg;</p>
+                    </div>
+                    <div class="date">
+                      <p>6,Nov</p>
+                    </div>
+                    <div class="days">
+                      <p>Wednesday</p>
+                    </div>
+                  </div>
+                  <div class="days-bg">
+                    <div class="days-img">
+                      <img src="images/clear.png" alt="clouds" />
+                      <p class="weather-heading">40&deg;</p>
+                    </div>
+                    <div class="date">
+                      <p>7,Nov</p>
+                    </div>
+                    <div class="days">
+                      <p>Thursday</p>
+                    </div>
+                  </div>
+                  <div class="days-bg">
+                    <div class="days-img">
+                      <img src="images/clouds.png" alt="clouds" />
+                      <p class="weather-heading">16&deg;</p>
+                    </div>
+                    <div class="date">
+                      <p>8,Nov</p>
+                    </div>
+                    <div class="days">
+                      <p>Friday</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="weather-output">
+              <h2 class="card-title">Highlights</h2>
+              <div class="highlight">
+                <div class="humidity">
+                  Humidity
+                  <i class="ri-water-percent-line"></i>
+                  <h1 id="HValue"></h1>
+                </div>
+                <div class="wind-speed">
+                  Wind Speed
+                  <i class="ri-windy-line"></i>
+                  <h1 id="WValue"></h1>
+                </div>
+                <div class="sun-div">
+                  <span>
+                    <i class="ri-sun-line icon sun"></i>
+                    <p><span id="SRValue"></span>Sunrise</p>
+                  </span>
+                  <span>
+                    <i class="ri-moon-line icon moon"></i>
+                    <p><span id="SSValue"></span>Sunset</p>
+                  </span>
+                </div>
+                <div class="clouds">
+                  Clouds
+                  <i class="ri-cloud-line icon"></i>
+                  <h1 id="CValue"></h1>
+                </div>
+                <div class="uv-index">
+                  UV index
+                  <i class="ri-tailwind-css-line"></i>
+                  <h1 id="UVValue"></h1>
+                </div>
+                <div class="pressure">
+                  Pressure
+                  <i class="ri-tailwind-css-line"></i>
+                  <h1 id="PValue"></h1>
+                </div>
+              </div>
+              <h2 class="card-title">This Week</h2>
+            </div>
+          </div>
+
+          <div>i love u</div>
+        </div>
+      </section>
+      <section class="page weather-2" style="display: none">
+        <div>weather-2</div>
+      </section>
+      <section class="page settings" style="display: none; padding: 2em">
+        <div class="settings-name"><h1>Settings</h1></div>
+        <div class="settings-content">
+          <div class="wrappar">
+            <div class="select-btn">
+              <span>Select Default Country</span>
+              <i class="ri-arrow-down-line"></i>
+            </div>
+            <div class="set-content">
+              <div class="search">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search" />
+              </div>
+              <ul class="options"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="javascript/script.js"></script>
+  </body>
+</html>
