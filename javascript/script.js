@@ -51,6 +51,11 @@ const visibility = document.getElementById("Visibility");
 const countryEl = document.getElementById("country");
 const weatherForecastEl = document.getElementById("weather-forecast");
 const currentTempEl = document.getElementById("current-temp");
+const HValue_one = document.getElementById("HValue-1");
+const WValue_one = document.getElementById("WValue-1");
+const PValue_one = document.getElementById("PValue-1");
+const current_mon = document.getElementById("current-mon");
+
 //wearher-page
 const date_page = document.getElementById("date1");
 const userLocation = document.getElementById("userLocation"),
@@ -60,11 +65,8 @@ const userLocation = document.getElementById("userLocation"),
   temperature = document.getElementById("temprature"),
   weather_icon = document.getElementById("weather-icon"),
   HValue = document.getElementById("HValue"),
-  HValue_one = document.getElementById("HValue-1"),
   WValue = document.getElementById("WValue"),
-  WValue_one = document.getElementById("WValue-1"),
   PValue = document.getElementById("PValue"),
-  PValue_one = document.getElementById("PValue-1"),
   CValue = document.getElementById("CValue"),
   SRValue = document.getElementById("SRValue"),
   SSValue = document.getElementById("SSValue"),
@@ -158,27 +160,25 @@ function addCountry() {
 function updateName(selectedLi) {
   wrappar.classList.remove("active");
   selectBtn.firstElementChild.innerText = selectedLi.innerText;
+
+  function getWeatherData() {
+    fetch(Weather_Api_Endpiont + selectedLi.innerText)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        timeZone.innerHTML = data.location.tz_id;
+        visibility.innerHTML = data.current.vis_km + "km";
+        countryEl.innerHTML = data.location.name;
+
+        WValue_one.innerHTML = data.current.wind_mph + "mph";
+        PValue_one.innerHTML = data.current.pressure_in;
+        HValue_one.innerHTML = data.current.humidity + "%";
+      });
+  }
+  getWeatherData();
 }
 addCountry();
 
 selectBtn.addEventListener("click", () => {
   wrappar.classList.toggle("active");
 });
-/*
-function getWeatherData() {
-  fetch(Weather_Api_Endpiont + "London")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.cod != "" && data.cod != 200) {
-        return;
-      }
-      console.log(data);
-      timeZone.innerHTML = data.timezone;
-      visibility.innerHTML = data.visibility;
-      country.innerHTML = data.name;
-      WValue_one.innerHTML = data.wind.speed;
-      weather_icon.style.background = `url( https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`;
-    });
-}
-getWeatherData();
-*/
