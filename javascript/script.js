@@ -18,13 +18,35 @@ tabs.forEach((tab, tab_index) => {
     });
   });
 });
+//small page
+let tabss = document.querySelectorAll(".topbar li a");
+let tabss_wrap = document.querySelectorAll(".page");
+
+tabss.forEach((tab, tab_index) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    tab.classList.add("active");
+
+    tabss_wrap.forEach((content, content_index) => {
+      if (content_index == tab_index) {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    });
+  });
+});
 
 //side bar
 const body = document.querySelector("body"),
   sidebar = body.querySelector(".sidebar"),
   toggle = body.querySelector(".toggle"),
   modeSwitch = body.querySelector(".toggle-switch"),
-  modeText = body.querySelector(".mode-text");
+  modeText = body.querySelector(".mode-text"),
+  modeSwitchh = body.querySelector(".togglee-switch"),
+  modeTextt = body.querySelector(".mode-textt");
 
 toggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
@@ -38,6 +60,17 @@ modeSwitch.addEventListener("click", () => {
     modeText.innerHTML = "Light Mode";
   } else {
     modeText.innerHTML = "Dark Mode";
+  }
+});
+
+//dark mode for setting
+modeSwitchh.addEventListener("click", () => {
+  body.classList.toggle("dark");
+
+  if (body.classList.contains("dark")) {
+    modeTextt.innerHTML = "Light Mode";
+  } else {
+    modeTextt.innerHTML = "Dark Mode";
   }
 });
 

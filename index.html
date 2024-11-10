@@ -19,6 +19,25 @@
     <link rel="stylesheet" href="styles/settings.css" />
   </head>
   <body>
+    <nav class="topbar">
+      <ul>
+        <li class="icon-small">
+          <a href="#" class="active">
+            <i class="ri-home-4-line icon"></i>
+          </a>
+        </li>
+        <li class="icon-small">
+          <a href="#">
+            <i class="ri-cloud-line icon small"></i>
+          </a>
+        </li>
+        <li class="icon-small">
+          <a href="#">
+            <i class="ri-settings-2-line icon"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
     <nav class="sidebar close">
       <header>
         <div class="image-text">
@@ -45,20 +64,15 @@
             </li>
             <li class="nav-links">
               <a href="#">
-                <i class="ri-cloud-line icon"></i>
+                <i class="ri-cloud-line icon icon-small"></i>
+
                 <span class="text nav-text">Weather</span>
-              </a>
-            </li>
-            <li class="nav-links">
-              <a href="#">
-                <i class="ri-showers-line icon"></i>
-                <span class="text nav-text">Dashboard</span>
               </a>
             </li>
 
             <li class="nav-links">
               <a href="#">
-                <i class="ri-settings-2-line icon"></i>
+                <i class="ri-settings-2-line icon icon-small"></i>
                 <span class="text nav-text">Settings</span>
               </a>
             </li>
@@ -71,8 +85,8 @@
               <i class="ri-moon-line icon moon"></i>
               <i class="ri-sun-line icon sun"></i>
             </div>
-            <span class="mode-text text">Dark Mode</span>
-            <div class="toggle-switch">
+            <span class="mode-textt text">Dark Mode</span>
+            <div class="togglee-switch">
               <span class="switch"> </span>
             </div>
           </li>
@@ -452,13 +466,62 @@
 
           <div>i love u</div>
         </div>
+        <div class="weather-container-small"></div>
       </section>
-      <section class="page weather-2" style="display: none">
-        <div>weather-2</div>
-      </section>
+
       <section class="page settings" style="display: none; padding: 2em">
         <div class="settings-name"><h1>Settings</h1></div>
         <div class="settings-content">
+          <div class="units">
+            <h5 style=" color: var(--text-color);">Units</h5>
+            <ul>
+              <li class="unit-contents">
+                <span>Temperature Unit</span>
+                <div class="scale">
+                  <select class="converter" id="converter">
+                    <option>C</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </li>
+              <li class="unit-contents">
+                <span>Wind Speed Unit</span>
+                <div class="scale">
+                  <select class="converter" id="converter">
+                    <option>meter per seconds(m/s)</option>
+                    <option>Kilometers per hour (km/hr)</option>
+                  </select>
+                </div>
+              </li>
+              <li class="unit-contents">
+                <span>Atmospheric Pressure Unit</span>
+                <div class="scale">
+                  <select class="converter" id="converter">
+                    <option>Milibar(mbar)</option>
+                    <option>km/hr</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="separator"></div>
+          <div class="dark-mode">
+            
+              <li class="mode">
+                <span class="mode-text text">Dark Mode</span>
+                <div class="moon-sun">
+                  <i class="ri-moon-line icon moon"></i>
+                  <i class="ri-sun-line icon sun"></i>
+                </div>
+               
+                <div class="toggle-switch">
+                  <span class="switch"> </span>
+                </div>
+              </li>
+           
+          </div>
+          <div class="separator"></div>
+          </div>
           <div class="wrappar">
             <div class="select-btn">
               <span>Select Default Country</span>

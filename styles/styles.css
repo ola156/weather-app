@@ -247,3 +247,48 @@ body.dark .switch::before {
   left: 88px;
   width: calc(100% - 88px);
 }
+.icon-small {
+  display: none;
+}
+
+@media screen and (max-width: 925px) {
+  .page {
+    left: 0px;
+  }
+  .sidebar {
+    display: none;
+  }
+  .topbar {
+    position: relative;
+    padding: 0.7em 1em 0em 1em;
+  }
+
+  .small {
+    position: absolute;
+    right: 55px;
+    top: -4px;
+  }
+  .icon-small {
+    display: block;
+  }
+
+  .topbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  .topbar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  .icon {
+    padding: 1em;
+    border-radius: 50%;
+    font-size: 1.1em;
+  }
+  .icon:hover {
+    background-color: var(--sidebar-color);
+  }
+}
