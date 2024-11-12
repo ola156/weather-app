@@ -108,11 +108,8 @@
   margin: 0px 10px;
   border: 1px solid var(--sidebar-color);
   border-radius: 50px;
-<<<<<<< HEAD
   padding: 1.2em 1.2em;
-=======
   padding: 1.1em 3em;
->>>>>>> 80a31fb35cf0c83c1f97655a597c22852211e095
   background-color: var(--bg-color);
 }
 
@@ -313,8 +310,6 @@
   padding-bottom: 0.5em;
   border-bottom: 1px solid var(--text-color);
   margin-bottom: 10px;
-}
-.weather-icon {
 }
 
 .date-list {
@@ -633,6 +628,10 @@
 
   .hightlight-col-1 .content-1 i {
     font-size: 2em;
+  }
+
+  .weather-forecast .weather.forecast-item {
+    padding: 1.1em 3em;
   }
 }
 
