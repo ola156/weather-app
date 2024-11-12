@@ -55,7 +55,7 @@
   color: var(--sidebar-color);
   padding: 2em;
   border-radius: 2.5em;
-  margin: 1.2em 0;
+  margin: 0em 1.2em 0;
   font-weight: 300;
 }
 
