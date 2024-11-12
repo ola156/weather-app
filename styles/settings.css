@@ -176,15 +176,29 @@ body.dark .switch::before {
 .separator {
   border-top: 1px solid var(--text-color);
 }
+@media screen and (min-width: 1240px) {
+  .settings-content {
+    width: 1240px;
+  }
+}
+@media screen and (max-width: 200px) {
+  .settings-content {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .settings-content {
+    width: 330px;
+  }
+}
+
 @media screen and (max-width: 920px) {
   .wrappar {
     width: 320px;
     padding: 1em;
   }
 
-  .settings-content {
-    width: 320px;
-  }
   .units {
     width: 100%;
   }

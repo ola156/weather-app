@@ -97,6 +97,7 @@ const userLocation = document.getElementById("userLocation"),
   current_location = document.getElementById("current-location"),
   temperature = document.getElementById("temprature"),
   weather_icon = document.getElementById("weather-icon"),
+  weather_text = document.getElementById("weather-text"),
   HValue = document.getElementById("HValue"),
   WValue = document.getElementById("WValue"),
   PValue = document.getElementById("PValue"),
@@ -160,12 +161,31 @@ setInterval(() => {
 }, 1000);
 
 Weather_Api_Endpiont = `http://api.weatherapi.com/v1/current.json/forecast.json?key=${API_KEY}&aqi=no&q=`;
+Weather_Api_Endpiont_Forecast = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=07112&days=7`;
+function getForecast() {
+  fetch(Weather_Api_Endpiont_Forecast)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
 
+      let fore = data.forecast.forecastday[0].day;
+      console.log(fore);
+    });
+}
+getForecast();
 function findUserLocation() {
   fetch(Weather_Api_Endpiont + userLocation.value)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+
+      city.innerHTML = data.location.name;
+      current_location.innerHTML = data.location.name;
+      WValue.innerHTML = data.current.wind_mph + "mph";
+      PValue.innerHTML = data.current.pressure_in;
+      HValue.innerHTML = data.current.humidity + "%";
+      temperature.innerHTML = data.current.temp_c;
+      weather_text.innerHTML = data.current.condition.text;
     });
 }
 findUserLocation();
@@ -173,6 +193,7 @@ findUserLocation();
 //setting section
 const wrappar = document.querySelector(".wrappar"),
   selectBtn = wrappar.querySelector(".select-btn"),
+  searchInp = wrappar.querySelector("input"),
   options = wrappar.querySelector(".options");
 
 let countries = [
@@ -182,15 +203,24 @@ let countries = [
   "Canada",
   "Mali",
   "Afganistan",
+  "China",
+  "America",
+  "South Africa",
+  "Denmark",
+  "Niger",
 ];
+//add countries
 function addCountry() {
   countries.forEach((country) => {
     let li = ` <li onclick="updateName(this)">${country}</li>`;
     options.insertAdjacentHTML("beforeend", li);
   });
 }
-
+addCountry();
 function updateName(selectedLi) {
+  options.innerHTML = "";
+  searchInp.value = "";
+  addCountry();
   wrappar.classList.remove("active");
   selectBtn.firstElementChild.innerText = selectedLi.innerText;
 
@@ -202,7 +232,6 @@ function updateName(selectedLi) {
         timeZone.innerHTML = data.location.tz_id;
         visibility.innerHTML = data.current.vis_km + "km";
         countryEl.innerHTML = data.location.name;
-
         WValue_one.innerHTML = data.current.wind_mph + "mph";
         PValue_one.innerHTML = data.current.pressure_in;
         HValue_one.innerHTML = data.current.humidity + "%";
@@ -210,8 +239,19 @@ function updateName(selectedLi) {
   }
   getWeatherData();
 }
-addCountry();
 
+searchInp.addEventListener("keyup", () => {
+  let arr = [];
+  let searchedVal = searchInp.value.toLowerCase();
+  arr = countries
+    .filter((data) => {
+      return data.toLowerCase().startsWith(searchedVal);
+    })
+    .map((data) => ` <li onclick="updateName(this)">${data}</li>`)
+    .join("");
+  options.innerHTML = arr ? arr : `<p>!Oops country not found </p>`;
+  console.log(arr);
+});
 selectBtn.addEventListener("click", () => {
   wrappar.classList.toggle("active");
 });

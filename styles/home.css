@@ -317,6 +317,9 @@
   display: flex;
   align-items: center;
 }
+.date-list li span {
+  margin-right: 10px;
+}
 
 .date-list li div {
   font-size: 0.9em;
@@ -374,7 +377,7 @@
 ---*/
 
 .weather-output {
-  margin-left: 20px;
+  margin-left: 25px;
   margin-top: 60px;
   padding: 2em;
 
@@ -470,10 +473,11 @@
   font-size: 2em;
 }
 
-@media screen and (max-width: 920px) {
-  .weather-container {
+@media screen and (max-width: 930px) {
+  .date-list {
     display: none;
   }
+
   .future-forecast {
     justify-content: start;
     align-items: none;
@@ -529,29 +533,44 @@
     font-size: 1.3em;
     font-weight: 100;
   }
-
-  .current-weather-card,
   .days-forecast-bg {
-    width: 360px;
+    width: 340px;
+    background-color: transparent;
+  }
+
+  .current-weather-card {
+    height: 210px;
+    color: var(--text-color);
+    background-color: transparent;
+    padding: 2em 1em 1em;
+    width: 350px;
+  }
+
+  .top-content {
+    top: 45px;
+    left: 0;
   }
   .top-content .current-location {
-    width: 50px;
+    width: 140px;
     margin-right: 20px;
     padding-left: 0px;
   }
   .top-content .current-location i {
     color: var(--text-color);
   }
-  .top-content .current-location p {
-    display: none;
-  }
-
-  .top-content .current-location span {
-    display: none;
-  }
 
   .top-content .icon-top-weather {
     width: 0px;
+  }
+  .weather-input input {
+    width: 100%;
+  }
+
+  .weather-content .weather-current-bg {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .weather-main-side {
@@ -579,6 +598,37 @@
     margin-left: 0px;
     margin-top: 0px;
   }
+
+  .highlight div {
+    display: grid;
+    height: 100px;
+    padding: 0.5em;
+  }
+
+  .highlight i {
+    font-size: 0.9em;
+  }
+  .highlight h1 {
+    font-size: 0.9em;
+    font-weight: 100;
+  }
+  .sun-div span {
+    gap: 5px;
+  }
+  .sun-div span p span {
+    font-size: 0.7em;
+  }
+  .item-flex h3 {
+    font-weight: 200;
+  }
+
+  .hightlight-col-1 .content-1 {
+    gap: 1em;
+  }
+
+  .hightlight-col-1 .content-1 i {
+    font-size: 2em;
+  }
 }
 
 @media screen and (max-width: 1459px) {
@@ -601,6 +651,7 @@
   .weather-output {
     margin-left: 0px;
     margin-top: 0px;
+    padding: 0px;
   }
 }
 
@@ -612,12 +663,9 @@
 }
 
 @media screen and (max-width: 859px) {
-  .highlight {
-    display: grid;
-    grid-template-columns: repeat(1, 200px);
-  }
-  .current-weather-card,
   .days-forecast-bg {
     height: 330px;
   }
+}
+@media screen and (max-width: 859px) {
 }
