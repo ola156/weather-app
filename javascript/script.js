@@ -84,6 +84,8 @@ const visibility = document.getElementById("Visibility");
 const countryEl = document.getElementById("country");
 const weatherForecastEl = document.getElementById("weather-forecast");
 const currentTempEl = document.getElementById("current-temp");
+const currentInformationEl = document.getElementById("current-information");
+
 const HValue_one = document.getElementById("HValue-1");
 const WValue_one = document.getElementById("WValue-1");
 const PValue_one = document.getElementById("PValue-1");
@@ -93,6 +95,8 @@ const current_mon = document.getElementById("current-mon");
 const date_page = document.getElementById("date1");
 const userLocation = document.getElementById("userLocation"),
   converter = document.getElementById("converter"),
+  converterP = document.getElementById("converterP"),
+  converterW = document.getElementById("converterW"),
   city = document.getElementById("city"),
   current_location = document.getElementById("current-location"),
   temperature = document.getElementById("temprature"),
@@ -162,32 +166,32 @@ setInterval(() => {
 
 Weather_Api_Endpiont = `http://api.weatherapi.com/v1/current.json/forecast.json?key=${API_KEY}&aqi=no&q=`;
 Weather_Api_Endpiont_Forecast = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=07112&days=7`;
-function getForecast() {
-  fetch(Weather_Api_Endpiont_Forecast)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
 
-      let fore = data.forecast.forecastday[0].day;
-      console.log(fore);
-    });
-}
-getForecast();
 function findUserLocation() {
   fetch(Weather_Api_Endpiont + userLocation.value)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
 
-      city.innerHTML = data.location.name;
+      city.innerHTML = data.location.tz_id;
       current_location.innerHTML = data.location.name;
-      WValue.innerHTML = data.current.wind_mph + "mph";
-      PValue.innerHTML = data.current.pressure_in;
-      HValue.innerHTML = data.current.humidity + "%";
-      temperature.innerHTML = data.current.temp_c;
+      WValue.innerHTML = windConverter(data.current.wind_mph);
+      PValue.innerHTML = pConverter(data.current.pressure_in);
+      HValue.innerHTML = Math.round(data.current.humidity) + "<span>%</span>";
+      UVValue.innerHTML = Math.round(data.current.uv);
+      CValue.innerHTML = Math.round(data.current.cloud) + "<span>%</span>";
+      temperature.innerHTML = TempConverter(data.current.temp_c);
       weather_text.innerHTML = data.current.condition.text;
+      weather_icon.innerHTML = `  <img
+                src=" https:${data.current.condition.icon}"
+                alt="weater icon"
+                class="weather-icon"
+              />`;
+      SRValue.innerHTML = data.forecast.forecastday[0].astro.sunset;
+      SSValue.innerHTML = data.forecast.forecastday[0].astro.sunrise;
     });
 }
+
 findUserLocation();
 
 //setting section
@@ -209,7 +213,7 @@ let countries = [
   "Denmark",
   "Niger",
 ];
-//add countries
+//add countries setting section
 function addCountry() {
   countries.forEach((country) => {
     let li = ` <li onclick="updateName(this)">${country}</li>`;
@@ -232,12 +236,61 @@ function updateName(selectedLi) {
         timeZone.innerHTML = data.location.tz_id;
         visibility.innerHTML = data.current.vis_km + "km";
         countryEl.innerHTML = data.location.name;
-        WValue_one.innerHTML = data.current.wind_mph + "mph";
-        PValue_one.innerHTML = data.current.pressure_in;
+        WValue_one.innerHTML = windConverter(data.current.wind_mph);
+        PValue_one.innerHTML = pConverter(data.current.pressure_in);
         HValue_one.innerHTML = data.current.humidity + "%";
       });
   }
   getWeatherData();
+
+  function getForecast() {
+    fetch(Weather_Api_Endpiont_Forecast)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        let otherDayForecast = "";
+        data.forecast.forecastday.forEach((forecastday, idx) => {
+          if (idx == 0) {
+            currentTempEl.innerHTML = `
+             <img
+              src=" https:${forecastday.day.condition.icon}"
+              alt="weater icon"
+              class="weather-icon"
+            />
+            <div class="others">
+              <div class="day" id="current-mon">${forecastday.date}</div>
+              <div class="temp">AvgTemp ${TempConverter(
+                forecastday.day.avgtemp_c
+              )}</div>
+              <div class="temp">MaxTemp  ${TempConverter(
+                forecastday.day.maxtemp_c
+              )}</div>
+            </div>`;
+          } else {
+            otherDayForecast += `
+             <div class="weather forecast-item">
+              <div class="day">${forecastday.date}</div>
+              <img
+                src=" https:${forecastday.day.condition.icon}"
+                alt="weater icon"
+                class="weather-icon"
+              />
+
+              <div class="temp">AvgTemp ${TempConverter(
+                forecastday.day.avgtemp_c
+              )}</div>
+              <div class="temp">MaxTemp  ${TempConverter(
+                forecastday.day.maxtemp_c
+              )}</div>
+            </div>
+            
+            `;
+          }
+        });
+        weatherForecastEl.innerHTML = otherDayForecast;
+      });
+  }
+  getForecast();
 }
 
 searchInp.addEventListener("keyup", () => {
@@ -255,3 +308,41 @@ searchInp.addEventListener("keyup", () => {
 selectBtn.addEventListener("click", () => {
   wrappar.classList.toggle("active");
 });
+// convert temp
+function TempConverter(temp) {
+  let tempValue = Math.round(temp);
+  let message = "";
+  if (converter.value == "° C") {
+    message = tempValue + "<span>" + "\xB0C</span>";
+  } else {
+    let ctof = (tempValue * 9) / 5 + 32;
+    message = ctof + "<span>" + "\xB0F</span>";
+  }
+  return message;
+}
+
+// convert wind
+function windConverter(wind) {
+  let windValue = Math.round(wind);
+  let message = "";
+  if (converterW.value == "Mph") {
+    message = windValue + "<span>" + " Mph</span>";
+  } else {
+    let mtok = (windValue * 160934) / 100000;
+    message = mtok + "<span>" + " km/hr</span>";
+  }
+  return message;
+}
+// convert pressure
+function pConverter(pressure) {
+  let pValue = Math.round(pressure);
+  let message = "";
+  if (converterP.value == "Mbar") {
+    message = pValue + "<span>" + " Mbar</span>";
+  } else {
+    let mtoa = pValue / 1013;
+    message = mtoa + "<span>" + " Atm </span>";
+    message = mtoa.toFixed(3);
+  }
+  return message;
+}

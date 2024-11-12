@@ -328,12 +328,16 @@
                   <p class="weather-heading" id="temprature">
                     20&deg;<sup>c</sup>
                   </p>
+                  <div id="weather-icon" class="weather-icon">
+                  </div>
+                  <!---
                   <img
-                    src=" https://openweathermap.org/img/wn/10d@2x.png"
+                    src=" https://cdn.weatherapi.com/weather/64x64/day/116.png"
                     alt="cloud"
                     class="weather-icon"
                     id="weather-icon"
                   />
+                  -->
                 </div>
 
                 <p class="weather-card-body" id="weather-text">Overcast Cloud</p>
@@ -349,9 +353,9 @@
                     <span class="icon">
                       <i class="ri-map-pin-line"></i>
                     </span>
-                    <p id="current-location">
+                    <div id="current-location">
                       Nigeria, <span>GB</span>
-                    </p>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -427,37 +431,37 @@
                 <div class="humidity">
                   Humidity
                   <i class="ri-water-percent-line"></i>
-                  <h1 id="HValue">1%</h1>
+                  <h1 id="HValue"></h1>
                 </div>
                 <div class="wind-speed">
                   Wind Speed
                   <i class="ri-windy-line"></i>
-                  <h1 id="WValue">1km/hr</h1>
+                  <h1 id="WValue"></h1>
                 </div>
                 <div class="sun-div">
                   <span>
                     <i class="ri-sun-line icon sun"></i>
-                    <p><span id="SRValue">6:30</span>Sunrise</p>
+                    <p><span id="SRValue"></span>Sunrise</p>
                   </span>
                   <span>
                     <i class="ri-moon-line icon moon"></i>
-                    <p><span id="SSValue">7:00</span>Sunset</p>
+                    <p><span id="SSValue"></span>Sunset</p>
                   </span>
                 </div>
                 <div class="clouds">
                   Clouds
                   <i class="ri-cloud-line icon"></i>
-                  <h1 id="CValue">clear</h1>
+                  <h1 id="CValue"></h1>
                 </div>
                 <div class="uv-index">
                   UV index
                   <i class="ri-tailwind-css-line"></i>
-                  <h1 id="UVValue">6</h1>
+                  <h1 id="UVValue"></h1>
                 </div>
                 <div class="pressure">
                   Pressure
                   <i class="ri-tailwind-css-line"></i>
-                  <h1 id="PValue">1atm</h1>
+                  <h1 id="PValue"></h1>
                 </div>
               </div>
              
@@ -479,26 +483,26 @@
                 <span>Temperature Unit</span>
                 <div class="scale">
                   <select class="converter" id="converter">
-                    <option>C</option>
-                    <option>F</option>
+                    <option>° C</option>
+                    <option>° F</option>
                   </select>
                 </div>
               </li>
               <li class="unit-contents">
                 <span>Wind Speed Unit</span>
                 <div class="scale">
-                  <select class="converter" id="converter">
-                    <option>meter per seconds(m/s)</option>
-                    <option>Kilometers per hour (km/hr)</option>
+                  <select class="converter" id="converterW">
+                    <option>Mph</option>
+                    <option> (km/hr)</option>
                   </select>
                 </div>
               </li>
               <li class="unit-contents">
                 <span>Atmospheric Pressure Unit</span>
                 <div class="scale">
-                  <select class="converter" id="converter">
-                    <option>Milibar(mbar)</option>
-                    <option>km/hr</option>
+                  <select class="converter" id="converterP">
+                    <option>Mbar</option>
+                    <option>Atm</option>
                   </select>
                 </div>
               </li>

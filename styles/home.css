@@ -108,7 +108,7 @@
   margin: 0px 10px;
   border: 1px solid var(--sidebar-color);
   border-radius: 50px;
-  padding: 1.2em 3em;
+  padding: 1.2em 1.2em;
   background-color: var(--bg-color);
 }
 
@@ -116,8 +116,10 @@
   padding: 5px 15px;
   background-color: var(--sidebar-color);
   border-radius: 20px;
+  font-size: 0.8em;
   text-align: center;
   color: var(--text-color);
+  width: 100px;
 }
 
 .weather.forecast-item .temp {
@@ -308,6 +310,8 @@
   border-bottom: 1px solid var(--text-color);
   margin-bottom: 10px;
 }
+.weather-icon {
+}
 
 .date-list {
   list-style: none;
@@ -316,9 +320,6 @@
 .date-list li {
   display: flex;
   align-items: center;
-}
-.date-list li span {
-  margin-right: 10px;
 }
 
 .date-list li div {
@@ -667,5 +668,22 @@
     height: 330px;
   }
 }
-@media screen and (max-width: 859px) {
+@media screen and (max-width: 1289px) {
+  .future-forecast {
+    justify-content: start;
+    align-items: none;
+    overflow-y: scroll;
+  }
+
+  .future-forecast .today {
+    padding: 1em 1.2em;
+  }
+
+  .future-forecast .today .day {
+    padding: 4px 12px;
+  }
+  .future-forecast .today .temp {
+    font-size: 1em;
+    padding-top: 10px;
+  }
 }
