@@ -25,7 +25,7 @@
   font-weight: 100;
 }
 .date-container .time {
-  font-size: 5em;
+  font-size: 4em;
 }
 .date-container .time .pm {
   font-size: 0.5em;
@@ -53,9 +53,9 @@
   flex-direction: column;
   background-color: var(--text-color);
   color: var(--sidebar-color);
-  padding: 2em;
+  padding: 1.2em 1.5;
   border-radius: 2.5em;
-  margin: 1.2em 0;
+  margin: 0em 1.2em 0;
   font-weight: 300;
 }
 
@@ -85,7 +85,7 @@
   justify-content: center;
   border: 1px solid var(--sidebar-color);
   border-radius: 50px;
-  padding: 2em 2.2em;
+  padding: 1.5em 2.2em;
 }
 
 .future-forecast .today .day {
@@ -96,7 +96,7 @@
   color: var(--text-color);
 }
 .future-forecast .today .temp {
-  font-size: 1.3em;
+  font-size: 1.1em;
   padding-top: 15px;
 }
 
@@ -108,7 +108,11 @@
   margin: 0px 10px;
   border: 1px solid var(--sidebar-color);
   border-radius: 50px;
+<<<<<<< HEAD
   padding: 1.2em 1.2em;
+=======
+  padding: 1.1em 3em;
+>>>>>>> 80a31fb35cf0c83c1f97655a597c22852211e095
   background-color: var(--bg-color);
 }
 
@@ -233,7 +237,7 @@
 
 .weather-main-side {
   padding: 1em 2em;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 1px solid var(--text-color);
   display: flex;
   align-items: center;
@@ -253,12 +257,12 @@
 }
 
 .weather-main-side h3 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 300;
 }
 
 .weather-main-side span {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 200;
 }
 
